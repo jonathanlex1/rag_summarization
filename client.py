@@ -13,6 +13,8 @@ if uploaded_file :
     if st.session_state['count'] >= 3 : 
         st.warning("You've reached the summarization limit")
     else : 
+        if not os.path.exists('data/') : 
+            os.makedirs('data/', exist_ok=True)
         temp_data_path = os.path.join('data/', uploaded_file.name)
         with open(temp_data_path, 'wb') as f : 
             f.write(uploaded_file.read())
